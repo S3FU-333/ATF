@@ -27,9 +27,30 @@ public class Login extends AbstractStepDef {
         click(homePage.getLogOutButton(),1
     }
 
+    @And ("user clicks on LogOut Button")
+    public void userClickOnLogOutButton() {
+        click(homePage.getUserMeniu(), 1);
+        highLightElement(homePage.getLogOutButton());
+        waitUntil(5);
+        click(homePage.getLogOutButton(), 1);
+    }
+
+    @And("insert username")
+    public void insertUsername() {
+        navigate(loginPageUrl, driver);
+        waitUntil(3);
+        sendKey(loginPage.getUsernameField(), "Admin");
+        saveData(USERNAME, "Admin");
+    }
+
     @When("user clicks on Login button")
     public void userCliskcOnLoginButton() {
         click(loginPage.getSubmitButton(), 1);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Then("user is redirect to homepage")
